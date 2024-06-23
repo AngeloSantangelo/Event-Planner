@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Partecipanti</title>
+</head>
+<body>
+    <h1>Partecipanti</h1>
+    <ul>
+        {% for partecipante in partecipanti %}
+            <li>{{ partecipante['nome'] }} {{ partecipante['cognome'] }} - {{ partecipante['telefono'] }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
