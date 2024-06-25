@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inserisci Nuovo Evento</title>
+    
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container mt-5">
+        <h2>Inserisci Nuovo Evento</h2>
+        <form action="/add_event" method="POST">
+            <div class="form-group row">
+                <label for="tema" class="col-sm-2 col-form-label">Tema</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="tema" name="tema" placeholder="Tema">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="data" class="col-sm-2 col-form-label">Data (GG/MM/AAAA)</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="data" name="data" placeholder="GG/MM/AAAA">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="prezzo_biglietto" class="col-sm-2 col-form-label">Prezzo Biglietto (€)</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" id="prezzo_biglietto" name="prezzo_biglietto" placeholder="Prezzo Biglietto">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="nome_locale" class="col-sm-2 col-form-label">Nome Locale</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="nome_locale" name="nome_locale" placeholder="Nome Locale">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="artisti" class="col-sm-2 col-form-label">Artisti</label>
+                <div class="col-sm-10">
+                    <select multiple class="form-control" id="artisti" name="artisti" size="20">
+                        {% for artista in artisti %}
+                            <option value="{{ artista._id }}|{{ artista.nome_arte }}|{{ artista.tipo }}|{{ artista.telefono }}|{{ artista.prezzo_artista }}">
+                                {{ artista.nome_arte }} ({{ artista.tipo }}) - {{ artista.telefono }} - €{{ artista.prezzo_artista }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10 offset-sm-2">
+                    <button type="submit" class="btn btn-primary">Inserisci Evento</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
