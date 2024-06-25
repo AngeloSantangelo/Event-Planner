@@ -25,7 +25,7 @@
             <tbody>
                 {% for evento in eventi %}
                     <tr>
-                        <th scope="row">{{ loop.index }}</th>
+                        <th scope="row">{{ evento['_id'] }}</th>
                         <td>{{ evento['tema'] }}</td>
                         <td>{{ evento['data'] }}</td>
                         <td>€{{ evento['prezzo_biglietto'] }},00</td>

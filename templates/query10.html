@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Query 10 Results</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container mt-4">
+        <h2>Risultati Query 10</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Locale</th>
+                    <th scope="col">Prezzo Biglietto</th>
+                    <th scope="col">Numero Partecipanti</th>
+                    <th scope="col">Incasso Totale</th>
+                    <th scope="col">Costo Artisti</th>
+                    <th scope="col">Guadagno Veritiero</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventi %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ evento['tema'] }}</td>
+                    <td>{{ evento['data'] }}</td>
+                    <td>{{ evento['nome_locale'] }}</td>
+                    <td>€{{ evento['prezzo_biglietto'] }},00</td>
+                    <td>{{ evento['numero_partecipanti'] }}</td>
+                    <td>€{{ evento['incasso_totale'] }}</td>
+                    <td>€{{ evento['costo_totale_artisti'] }}0</td>
+                    <td>€{{ evento['guadagno_veritiero'] }}0</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

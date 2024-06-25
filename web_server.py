@@ -62,6 +62,28 @@ def query2():
     artisti = mongo.db.artisti.find()
     return render_template('query2.html', artisti=artisti)
 
+@app.route('/query10')
+def query10():
+    eventi = mongo.db.eventi.find()
+    risultati = []
+    for evento in eventi:
+        numero_partecipanti = len(evento.get('partecipanti', []))
+        prezzo_biglietto = float(evento['prezzo_biglietto'])
+        incasso_totale = prezzo_biglietto * numero_partecipanti
+        costo_totale_artisti = sum(float(artista['prezzo_artista']) for artista in evento['artisti'])
+        guadagno_veritiero = incasso_totale - costo_totale_artisti
+        
+        evento['numero_partecipanti'] = numero_partecipanti
+        evento['incasso_totale'] = incasso_totale
+        evento['costo_totale_artisti'] = costo_totale_artisti
+        evento['guadagno_veritiero'] = guadagno_veritiero
+        
+        risultati.append(evento)
+    return render_template('query10.html', eventi=risultati)
+
+
+
+
 if __name__ == '__main__':
     app.secret_key = 'secretivekey'
     app.run(debug=True)
