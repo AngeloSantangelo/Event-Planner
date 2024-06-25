@@ -62,6 +62,40 @@ def query2():
     artisti = mongo.db.artisti.find()
     return render_template('query2.html', artisti=artisti)
 
+@app.route('/query3')
+def query3():
+    eventi = mongo.db.eventi.find()
+    risultati = []
+    for evento in eventi:
+        tema = evento['tema']
+        data = evento['data']
+        nome_locale = evento['nome_locale']
+        prezzo_biglietto = evento['prezzo_biglietto']
+        costo_totale_artisti = sum(float(artista['prezzo_artista']) for artista in evento['artisti'])
+        risultati.append({
+            'tema': tema,
+            'data': data,
+            'nome_locale': nome_locale,
+            'prezzo_biglietto': prezzo_biglietto,
+            'costo_totale_artisti': costo_totale_artisti
+        })
+    return render_template('query3.html', eventi=risultati)
+
+@app.route('/query4')
+def query4():
+    eventi = mongo.db.eventi.find()
+    
+    risultati = []
+    for evento in eventi:
+        numero_partecipanti = len(evento.get('partecipanti', []))
+        incasso_totale = numero_partecipanti * evento['prezzo_biglietto']
+        evento['numero_partecipanti'] = numero_partecipanti
+        evento['incasso_totale'] = incasso_totale
+        risultati.append(evento)
+
+    return render_template('query4.html', eventi=risultati)
+
+
 @app.route('/query10')
 def query10():
     eventi = mongo.db.eventi.find()

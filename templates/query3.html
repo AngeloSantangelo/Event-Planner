@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Query 10 Results</title>
+    <title>Query 3 Results</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
     {% include 'navbar.html' %}
-
     <div class="container mt-4">
-        <h2>Risultati Query 10</h2>
+        <h2>Risultati Query 3</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -19,7 +17,7 @@
                     <th scope="col">Tema</th>
                     <th scope="col">Data</th>
                     <th scope="col">Locale</th>
-                    <th scope="col">Guadagno Veritiero</th>
+                    <th scope="col">Costo Totale Artisti</th>
                 </tr>
             </thead>
             <tbody>
@@ -29,7 +27,7 @@
                     <td>{{ evento['tema'] }}</td>
                     <td>{{ evento['data'] }}</td>
                     <td>{{ evento['nome_locale'] }}</td>
-                    <td>€{{ evento['guadagno_veritiero'] }}0</td>
+                    <td>€{{ evento['costo_totale_artisti'] }}0</td>
                 </tr>
                 {% endfor %}
             </tbody>
