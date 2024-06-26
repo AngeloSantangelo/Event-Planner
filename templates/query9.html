@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Query 6</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h1 class="my-4">Eventi</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Prezzo Biglietto</th>
+                    <th scope="col">Nome Locale</th>
+                    <th scope="col">Artisti</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for evento in eventi %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ evento['tema'] }}</td>
+                        <td>{{ evento['data'] }}</td>
+                        <td>€{{ evento['prezzo_biglietto'] }},00</td>
+                        <td>{{ evento['nome_locale'] }}</td>
+                        <td>
+                            <ul>
+                                {% for artista in evento['artisti'] %}
+                                    <li>{{ artista['nome_arte'] }} ({{ artista['tipo'] }}) - €{{ artista['prezzo_artista'] }},00</li>
+                                {% endfor %}
+                            </ul>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

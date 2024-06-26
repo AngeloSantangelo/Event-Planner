@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risultati Query 6</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h2>Risultati Query 6</h2>
+        <p class="font-weight-normal">Elenco di tutti gli artisti con un budget al di sotto di €{{ budget }},00.</p>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome D'arte</th>
+                    <th scope="col">Tipologia</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Prezzo Artista</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for artista in artisti %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ artista['nome_arte'] }}</td>
+                    <td>{{ artista['tipo'] }}</td>
+                    <td>{{ artista['telefono'] }}</td>
+                    <td>€{{ artista['prezzo_artista'] }},00</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
