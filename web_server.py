@@ -131,6 +131,36 @@ def query6():
         return render_template('query6.html', artisti=artisti, budget=budget)
     return render_template('query6_form.html')
 
+@app.route('/query7', methods=['GET', 'POST'])
+def query7():
+    if request.method == 'POST':
+        codice_evento = request.form['codice_evento']
+        try:
+            # Conversione il codice_evento in ObjectId
+            codice_evento = ObjectId(codice_evento)
+        except Exception as e:
+            return f"Codice evento non valido: {e}", 400
+        
+        result = mongo.db.eventi.delete_one({'_id': codice_evento})
+
+        if result.deleted_count > 0:
+            return redirect(url_for('welcome'))
+        else:
+            return "Evento non trovato", 404
+    return render_template('query7.html')
+
+@app.route('/query8', methods=['GET', 'POST'])
+def query8():
+    if request.method == 'POST':
+        nome_arte = request.form['nome_arte']
+        eventi = []
+        for evento in mongo.db.eventi.find():
+            artisti = evento.get('artisti', '')
+            for artista in artisti:
+                if artista['nome_arte'] == nome_arte:
+                    eventi.append(evento)
+        return render_template('query8.html', eventi=eventi, nome_arte=nome_arte)
+    return render_template('query8_form.html')
 
 @app.route('/query9', methods=['GET', 'POST'])
 def query9():
