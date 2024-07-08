@@ -7,3 +7,9 @@ Tale progetto è un'applicazione web per gestire eventi, inclusa la creazione, l
 - [MongoDB-Compass](https://www.mongodb.com/docs/compass/current/install/).
 - [Python(versione 3.12.4](https://www.python.org/downloads/) con libreria [PyMongo](https://pypi.org/project/pymongo/).
 - [Flask](https://pypi.org/project/Flask/).
+
+## Descrizione delle Cartelle
+- La cartella **json** contiene i dati fittizi generati con il tool [Mockaroo](https://www.mockaroo.com/), in particolare attraverso file con estensione .json;
+- Il file **db_load.py** rappresenta lo script Python che legge i file json e importa automaticamente tutti i dati in MongoDB Compass;
+- La cartella **templates** contiene i vari file HTML realizzati per la visualizzazione e l'inserimento di dati al fine di effettuare il rendering delle query response;
+- Il file **web_server.py** rappresente il Web Server con la definizione delle API per interagire con MongoDB e con il Front-End;
