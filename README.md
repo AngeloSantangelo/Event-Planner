@@ -1,7 +1,7 @@
 # Event-Planner
 Sistema ideato per un gruppo di organizzatori di eventi pubbilici ed è stato realizzato come progetto universitario per il corso di Basi di Dati II del dipartimento di Informatica persso l'Università degli Studi di Salerno.
 ## Descrizione
-Tale progetto è un'applicazione web per gestire eventi, inclusa la creazione, la visualizzazione e la ricerca di eventi. Gli organizzatori possono inserire nuovi eventi, vedere i dettagli degli eventi esistenti, e eseguire diverse query sui dati esistenti.
+Tale progetto è un'applicazione web per gestire eventi, inclusa la creazione, la visualizzazione e la ricerca di eventi. Gli organizzatori possono inserire nuovi eventi, vedere i dettagli degli eventi esistenti, e eseguire diverse query sui dati esistenti. La spiegazione dettagliata è presente nella documentazione del progetto.
 
 ## Requisiti
 - [MongoDB-Compass](https://www.mongodb.com/docs/compass/current/install/).
@@ -13,6 +13,7 @@ Tale progetto è un'applicazione web per gestire eventi, inclusa la creazione, l
 - Il file **db_load.py** rappresenta lo script Python che legge i file json e importa automaticamente tutti i dati in MongoDB Compass;
 - La cartella **templates** contiene i vari file HTML realizzati per la visualizzazione e l'inserimento di dati al fine di effettuare il rendering delle query response;
 - Il file **web_server.py** rappresente il Web Server con la definizione delle API per interagire con MongoDB e con il Front-End;
+- La cartella **docs** contiene la documentazione del progetto dove sono stati illustrati dettagliatamente tutti i passaggi per la realizzazione del progetto. 
 
 ## Configurazione dell'infrastruttura MongoDB
 Per automatizzare la procedura di importazione dei dati in MongoDB, bisogna eseguire il file **db_load.py** tramite il seguente comando:
